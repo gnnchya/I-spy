@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-// 物体検出
 public class Detector : MonoBehaviour
 {
     // アンカー
@@ -20,20 +19,20 @@ public class Detector : MonoBehaviour
     public TextAsset labelsFile; // ラベル
 
     // パラメータ
-    public const int IMAGE_SIZE = 416; // 画像サイズ
+    public const int IMAGE_SIZE = 640; // 画像サイズ
     private const int IMAGE_MEAN = 0;
     private const float IMAGE_STD = 1f;
-    private const string INPUT_NAME = "image";
-    private const string OUTPUT_NAME = "grid";
+    private const string INPUT_NAME = "input_2";
+    private const string OUTPUT_NAME = "dense_1";
 
     // 出力のパース
-    private const int ROW_COUNT = 13; // 行
-    private const int COL_COUNT = 13; // 列
-    private const int BOXES_PER_CELL = 5; // セル毎のボックス数
-    private const int BOX_INFO_FEATURE_COUNT = 5; // ボックス情報の特徴数
-    private const int CLASS_COUNT = 20; // クラス数
-    private const float CELL_WIDTH = 32; // セル幅
-    private const float CELL_HEIGHT = 32; // セル高さ
+    private const int ROW_COUNT = 1; // 行
+    private const int COL_COUNT = 1; // 列
+    private const int BOXES_PER_CELL = 1; // セル毎のボックス数
+    private const int BOX_INFO_FEATURE_COUNT = 1; // ボックス情報の特徴数
+    private const int CLASS_COUNT = 4; // クラス数
+    private const float CELL_WIDTH = 50; // セル幅
+    private const float CELL_HEIGHT = 50; // セル高さ
 
     // 出力のフィルタリング
     private const float MINIMUM_CONFIDENCE = 0.3f; // 最小検出信頼度
@@ -92,7 +91,7 @@ public class Detector : MonoBehaviour
     }
 
     // 出力のパース
-    private IList<BoundingBox> ParseOutputs(Tensor output, float threshold = .3F)
+    private IList<BoundingBox> ParseOutputs(Tensor output, float threshold = .1F)
     {
         var boxes = new List<BoundingBox>();
         for (int cy = 0; cy < COL_COUNT; cy++)
@@ -104,7 +103,14 @@ public class Detector : MonoBehaviour
                     var channel = (box * (CLASS_COUNT + BOX_INFO_FEATURE_COUNT));
 
                     // バウンディングボックスの寸法と信頼度の取得
+                    //Debug.Log("hi");
+                    //Debug.Log(output);
+                    //Debug.Log(cx);
+                    //Debug.Log(cy);
+                    //Debug.Log(channel);
                     var dimensions = GetBoundingBoxDimensions(output, cx, cy, channel);
+                    Debug.Log("right");
+
                     float confidence = GetConfidence(output, cx, cy, channel);
                     if (confidence < threshold)
                     {
@@ -142,6 +148,16 @@ public class Detector : MonoBehaviour
     // バウンディングボックスの抽出
     private Rect GetBoundingBoxDimensions(Tensor output, int x, int y, int channel)
     {
+        //Debug.Log("hi");
+        //Debug.Log(output);
+        //Debug.Log(x);
+        //Debug.Log(y);
+        //Debug.Log(channel);
+        //Debug.Log(output[0, x, y, channel]);
+        //Debug.Log(output[0, x, y, channel + 1]);
+        //Debug.Log(output[0, x, y, channel + 2]);
+        //Debug.Log(output[0, x, y, channel + 3]);
+
         return new Rect(
             output[0, x, y, channel],
             output[0, x, y, channel + 1],

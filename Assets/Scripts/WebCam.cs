@@ -18,7 +18,7 @@ public class WebCam : MonoBehaviour
     // 描画
     Texture2D lineTexture; // ラインテクスチャ
     GUIStyle guiStyle; // GUIスタイル
-    
+
     // 情報
     IList<BoundingBox> boxes; // 検出したバウンディングボックス
     float shiftX = 512f - 200f; // 描画先のX座標
@@ -35,8 +35,7 @@ public class WebCam : MonoBehaviour
         // Webカメラの開始
         this.rawImage = GetComponent<RawImage>();
         this.webCamTexture = new WebCamTexture();
-        this.webCamTexture = new WebCamTexture(
-            Detector.IMAGE_SIZE, Detector.IMAGE_SIZE, 30);
+        this.webCamTexture = new WebCamTexture(WebCamTexture.devices[1].name, Detector.IMAGE_SIZE, Detector.IMAGE_SIZE, 30);
         this.rawImage.texture = this.webCamTexture;
         this.webCamTexture.Play();
 
