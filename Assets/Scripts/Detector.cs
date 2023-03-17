@@ -30,7 +30,7 @@ public class Detector : MonoBehaviour
     private const int COL_COUNT = 1; // 列
     private const int BOXES_PER_CELL = 1; // セル毎のボックス数
     private const int BOX_INFO_FEATURE_COUNT = 1; // ボックス情報の特徴数
-    private const int CLASS_COUNT = 4; // クラス数
+    private const int CLASS_COUNT = 1; // クラス数
     private const float CELL_WIDTH = 50; // セル幅
     private const float CELL_HEIGHT = 50; // セル高さ
 

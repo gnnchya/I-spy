@@ -24,6 +24,7 @@ public class WebCam : MonoBehaviour
     float shiftX = 512f - 200f; // 描画先のX座標
     float shiftY = 384f - 200f; // 描画先のY座標
     float scaleFactor = 400f / (float)Detector.IMAGE_SIZE; // 描画先のスケール
+    //float scaleFactor = Screen.width / (float)Detector.IMAGE_SIZE;
 
     // 推論
     public Detector detector; // 物体検出
@@ -36,8 +37,13 @@ public class WebCam : MonoBehaviour
         this.rawImage = GetComponent<RawImage>();
         this.webCamTexture = new WebCamTexture();
         this.webCamTexture = new WebCamTexture(WebCamTexture.devices[1].name, Detector.IMAGE_SIZE, Detector.IMAGE_SIZE, 30);
+        //this.webCamTexture = new WebCamTexture(WebCamTexture.devices[1].name, Screen.width, Screen.height, 30);
+
         this.rawImage.texture = this.webCamTexture;
         this.webCamTexture.Play();
+
+        RectTransform rt = this.rawImage.rectTransform;
+        rt.sizeDelta = new Vector2(Screen.width, Screen.height);
 
         // ラインテクスチャ
         this.lineTexture = new Texture2D(1, 1);

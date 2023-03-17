@@ -1,5 +1,5 @@
-banana
-cup
-pen
-phone
-Raccoon
+Backpack
+Laptop
+Ruler
+Shoe
+Spoon
