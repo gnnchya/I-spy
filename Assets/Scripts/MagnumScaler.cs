@@ -30,7 +30,8 @@ public class MagnumScaler : MonoBehaviour
 
         image.GetComponent<RectTransform>().localScale = new Vector3(scale, scale, 1f);
         float imageTop = image.GetComponent<RectTransform>().rect.height * scale / 2f;
+        float imageRight = (image.GetComponent<RectTransform>().rect.width * scale)/ 2f;
 
-        //image.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -imageTop);
+        image.GetComponent<RectTransform>().anchoredPosition = new Vector2(imageRight, imageTop);
     }
 }
