@@ -19,6 +19,8 @@ public class WebCam : MonoBehaviour
     Texture2D lineTexture; // ラインテクスチャ
     GUIStyle guiStyle; // GUIスタイル
 
+    public GameObject NoCameraDetected;
+
     // 情報
     IList<BoundingBox> boxes; // 検出したバウンディングボックス
     float shiftX = 512f - 200f; // 描画先のX座標
@@ -35,7 +37,24 @@ public class WebCam : MonoBehaviour
     {
         // Webカメラの開始
         this.rawImage = GetComponent<RawImage>();
-        this.webCamTexture = new WebCamTexture();
+        WebCamDevice[] devices = WebCamTexture.devices;
+
+        if (devices.Length == 0)
+        {
+            NoCameraDetected.SetActive(true);
+            return;
+        }
+
+        //for (int i =0; i < devices.Length; i++)
+        //{
+        //    if (devices[i].isFrontFacing)
+        //    {
+        //        this.webCamTexture = new WebCamTexture(WebCamTexture.devices[i].name, Detector.IMAGE_SIZE, Detector.IMAGE_SIZE, 30);
+
+        //    }
+        //}
+
+        //this.webCamTexture = new WebCamTexture();
         this.webCamTexture = new WebCamTexture(WebCamTexture.devices[1].name, Detector.IMAGE_SIZE, Detector.IMAGE_SIZE, 30);
         //this.webCamTexture = new WebCamTexture(WebCamTexture.devices[1].name, Screen.width, Screen.height, 30);
 

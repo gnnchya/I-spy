@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using TMPro;
 
 public class Detector : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Detector : MonoBehaviour
     // リソース
     public NNModel modelFile; // モデル
     public TextAsset labelsFile; // ラベル
+    public TextMeshProUGUI item;
+    public TempGetPoint addPoint;
 
     // パラメータ
     public const int IMAGE_SIZE = 640; // 画像サイズ
@@ -124,6 +127,11 @@ public class Detector : MonoBehaviour
                     if (topScore < threshold)
                     {
                         continue;
+                    }
+
+                    if (item.text == labels[topResultIndex])
+                    {
+                        addPoint.Add();
                     }
 
                     // バウンディングボックスをセルにマッピング

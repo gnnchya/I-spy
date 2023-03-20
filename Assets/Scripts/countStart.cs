@@ -8,9 +8,11 @@ public class countStart : MonoBehaviour
     public float timeRemaining = 5;
     public TextMeshProUGUI count;
     public GameObject countObject;
+    public GameObject NoCamDetected;
     public GameObject Item;
     public AudioSource StartSound;
     public AudioSource clockTick;
+    public GameObject skipButton;
 
     private bool isTickPlayed = false;
     private bool isStartPlayed = false;
@@ -18,7 +20,7 @@ public class countStart : MonoBehaviour
 
     private void Update()
     {
-        if (!done)
+        if (!done && !NoCamDetected.activeSelf)
         {
             if (Mathf.RoundToInt(timeRemaining) > 1)
             {
@@ -35,6 +37,7 @@ public class countStart : MonoBehaviour
                 }
                 countObject.SetActive(false);
                 Item.SetActive(true);
+                skipButton.SetActive(true);
                 done = true;
 
             }
