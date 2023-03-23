@@ -14,4 +14,9 @@ public class Changescene : MonoBehaviour
     {
         SceneManager.LoadScene("Landing");
     }
+
+    public void LoadGameSceneHint()
+    {
+        SceneManager.LoadScene("GameSceneHint");
+    }
 }

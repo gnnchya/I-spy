@@ -10,6 +10,7 @@ public class countStart : MonoBehaviour
     public GameObject countObject;
     public GameObject NoCamDetected;
     public GameObject Item;
+    public GameObject toBeDetectedItem;
     public AudioSource StartSound;
     public AudioSource clockTick;
     public GameObject skipButton;
@@ -38,6 +39,7 @@ public class countStart : MonoBehaviour
                 countObject.SetActive(false);
                 Item.SetActive(true);
                 skipButton.SetActive(true);
+                toBeDetectedItem.SetActive(true);
                 done = true;
 
             }

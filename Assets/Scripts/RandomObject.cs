@@ -12,33 +12,48 @@ public class RandomObject : MonoBehaviour
     public TextMeshProUGUI item;
 
     private string[] labels;
-    private string[] used;
+    private List<string> used;
+    private List<string> excluded;
 
     // Start is called before the first frame update
     void Start()
     {
         this.labels = Regex.Split(this.labelsFile.text, "\n|\r|\r\n")
            .Where(s => !String.IsNullOrEmpty(s)).ToArray();
-        this.used = new string[0];
+        this.used = new List<string>();
+        this.excluded = new List<string>();
         Random();
     }
 
     // Update is called once per frame
-    public void Random()
+    public void Random(string excludedItems = "")
     {
+        // Add the excluded items to the excluded list
+        if (!String.IsNullOrEmpty(excludedItems))
+        {
+            this.excluded.Add(excludedItems);
+        }
+
         if (labels.Length == 0)
         {
-            // All items have been used, reset the list
-            labels = used;
-            used = new string[0];
+            // All items have been used or excluded, reset the list
+            labels = used.ToArray();
+            used.Clear();
         }
         // Randomly select an item from the labels array
         int randomIndex = UnityEngine.Random.Range(0, labels.Length);
         string itemText = labels[randomIndex];
-        // Add the selected item to the used array and remove it from labels
-        used = used.Concat(new string[] { itemText }).ToArray();
+
+        if (String.IsNullOrEmpty(excludedItems))
+        {
+            Debug.Log("used" + excludedItems);
+            used.Add(itemText);
+        } else
+        {
+            used = used.Where(x => !excluded.Contains(x)).ToList();
+        }
+
         labels = labels.Where((val, idx) => idx != randomIndex).ToArray();
-        // Set the text of the item TextMeshProUGUI component
         item.text = itemText;
     }
 }

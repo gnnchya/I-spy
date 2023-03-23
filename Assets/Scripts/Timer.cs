@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     public GameObject scope;
     public GameObject Ispy;
     public GameObject textBox;
+    public GameObject toBeDetectedItem;
     public AudioSource timeOutSound;
     public AudioSource clockTick;
 
@@ -36,6 +37,7 @@ public class Timer : MonoBehaviour
                 scope.SetActive(false);
                 Ispy.SetActive(false);
                 textBox.SetActive(false);
+                toBeDetectedItem.SetActive(false);
                 if (!isEndPlayed)
                 {
                     isEndPlayed = true;
