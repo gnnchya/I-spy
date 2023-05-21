@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     public GameObject Ispy;
     public GameObject textBox;
     public GameObject toBeDetectedItem;
+    public GameObject SkipButton;
     public AudioSource timeOutSound;
     public AudioSource clockTick;
 
@@ -38,6 +39,7 @@ public class Timer : MonoBehaviour
                 Ispy.SetActive(false);
                 textBox.SetActive(false);
                 toBeDetectedItem.SetActive(false);
+                SkipButton.SetActive(false);
                 if (!isEndPlayed)
                 {
                     isEndPlayed = true;

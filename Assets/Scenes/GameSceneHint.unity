@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44671863, g: 0.496575, b: 0.5750147, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -771,6 +771,7 @@ MonoBehaviour:
   countObject: {fileID: 423092996}
   NoCamDetected: {fileID: 483306158}
   Item: {fileID: 469423413}
+  toBeDetectedItem: {fileID: 312219312}
   StartSound: {fileID: 1715920345}
   clockTick: {fileID: 2104702598}
   skipButton: {fileID: 1959862698}
@@ -807,7 +808,7 @@ GameObject:
   - component: {fileID: 469423414}
   - component: {fileID: 469423416}
   - component: {fileID: 469423415}
-  - component: {fileID: 469423417}
+  - component: {fileID: 469423418}
   m_Layer: 5
   m_Name: item
   m_TagString: Untagged
@@ -931,7 +932,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469423413}
   m_CullTransparentMesh: 0
---- !u!114 &469423417
+--- !u!114 &469423418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -940,11 +941,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 469423413}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de08dd6a28b4f433791955872705a9c1, type: 3}
+  m_Script: {fileID: 11500000, guid: e3f79b764d7074db3947d81d06733e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelsFile: {fileID: 4900000, guid: 1fb55e18a3ca24ef7b52996306aa8b19, type: 3}
-  item: {fileID: 469423415}
+  item: {fileID: 700960964}
 --- !u!1 &483306158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1658,6 @@ GameObject:
   - component: {fileID: 700960965}
   - component: {fileID: 700960964}
   - component: {fileID: 700960963}
-  - component: {fileID: 700960966}
   m_Layer: 5
   m_Name: item-to-be-detected
   m_TagString: Untagged
@@ -1692,12 +1691,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700960961}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de08dd6a28b4f433791955872705a9c1, type: 3}
+  m_Script: {fileID: 11500000, guid: e3f79b764d7074db3947d81d06733e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelsFile: {fileID: 4900000, guid: 1fb55e18a3ca24ef7b52996306aa8b19, type: 3}
   item: {fileID: 700960964}
 --- !u!114 &700960964
 MonoBehaviour:
@@ -1796,20 +1794,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700960961}
   m_CullTransparentMesh: 0
---- !u!114 &700960966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 700960961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de08dd6a28b4f433791955872705a9c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  labelsFile: {fileID: 4900000, guid: 1fb55e18a3ca24ef7b52996306aa8b19, type: 3}
-  item: {fileID: 700960964}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,6 +2039,8 @@ MonoBehaviour:
   scope: {fileID: 56098016}
   Ispy: {fileID: 1310805942}
   textBox: {fileID: 2013884657}
+  toBeDetectedItem: {fileID: 312219312}
+  SkipButton: {fileID: 1959862698}
   timeOutSound: {fileID: 1715920345}
   clockTick: {fileID: 1484098020}
   count: {fileID: 423092996}
@@ -2325,7 +2311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0000061989, y: -100}
+  m_AnchoredPosition: {x: -0, y: -100}
   m_SizeDelta: {x: 834.71204, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &925754493
@@ -2431,7 +2417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NoCameraDetected: {fileID: 483306158}
-  detector: {fileID: 1034436817}
+  detector: {fileID: 0}
 --- !u!114 &961178223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2702,7 +2688,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 969329568}
-        m_MethodName: LoadGameScene
+        m_MethodName: LoadGameSceneHint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2793,7 +2779,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1034436818}
   - component: {fileID: 1034436817}
-  - component: {fileID: 1034436819}
   m_Layer: 0
   m_Name: Detector
   m_TagString: Untagged
@@ -2808,16 +2793,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034436816}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c6e709b121a3354b9c3cde27934c344, type: 3}
+  m_Script: {fileID: 11500000, guid: 538f7ed115d5240ab87e1488dbe83df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelFile: {fileID: 5022602860645237092, guid: 9ab0d7a5b85c6443180446f41f392e65,
-    type: 3}
-  labelsFile: {fileID: 4900000, guid: 1fb55e18a3ca24ef7b52996306aa8b19, type: 3}
-  item: {fileID: 469423415}
-  addPoint: {fileID: 1733527438}
+  rawImage: {fileID: 961178223}
+  detectionText: {fileID: 469423415}
+  gameText: {fileID: 700960964}
+  timerText: {fileID: 809514203}
+  imageWidth: 640
+  imageHeight: 640
+  queueLength: 55
+  addPoint: {fileID: 1733527439}
 --- !u!4 &1034436818
 Transform:
   m_ObjectHideFlags: 0
@@ -2832,27 +2820,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1034436819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1034436816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a48ee63b16324c0b8dca6829a34c006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rawImage: {fileID: 961178223}
-  detectionText: {fileID: 469423415}
-  gameText: {fileID: 700960964}
-  modelFile: {fileID: 5022602860645237092, guid: 9ab0d7a5b85c6443180446f41f392e65,
-    type: 3}
-  labelsFile: {fileID: 4900000, guid: 1fb55e18a3ca24ef7b52996306aa8b19, type: 3}
-  imageWidth: 640
-  imageHeight: 640
-  addPoint: {fileID: 1733527438}
 --- !u!1 &1044117242
 GameObject:
   m_ObjectHideFlags: 0
@@ -4040,7 +4007,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1458096677}
-        m_MethodName: LoadGameScene
+        m_MethodName: LoadGameSceneHint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4709,7 +4676,7 @@ GameObject:
   - component: {fileID: 1733527442}
   - component: {fileID: 1733527441}
   - component: {fileID: 1733527440}
-  - component: {fileID: 1733527438}
+  - component: {fileID: 1733527439}
   m_Layer: 5
   m_Name: temp
   m_TagString: Untagged
@@ -4736,7 +4703,7 @@ RectTransform:
   m_AnchoredPosition: {x: 2, y: 496}
   m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1733527438
+--- !u!114 &1733527439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4745,11 +4712,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1733527436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55d69d1d85324ff5a0664768bf07534, type: 3}
+  m_Script: {fileID: 11500000, guid: 9623c8c9d8cdf455fb44e71a6953ea60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 330148738}
-  randomizer: {fileID: 469423417}
+  randomizer: {fileID: 469423418}
   correctSound: {fileID: 1044117243}
 --- !u!114 &1733527440
 MonoBehaviour:
@@ -4805,9 +4772,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1733527438}
+      - m_Target: {fileID: 1733527439}
         m_MethodName: Add
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5004,7 +4971,7 @@ GameObject:
   - component: {fileID: 1959862702}
   - component: {fileID: 1959862701}
   - component: {fileID: 1959862700}
-  - component: {fileID: 1959862703}
+  - component: {fileID: 1959862704}
   m_Layer: 5
   m_Name: Skip Button
   m_TagString: Untagged
@@ -5074,7 +5041,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1959862703}
+      - m_Target: {fileID: 1959862704}
         m_MethodName: Random
         m_Mode: 1
         m_Arguments:
@@ -5122,7 +5089,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959862698}
   m_CullTransparentMesh: 0
---- !u!114 &1959862703
+--- !u!114 &1959862704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5131,10 +5098,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1959862698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de08dd6a28b4f433791955872705a9c1, type: 3}
+  m_Script: {fileID: 11500000, guid: e3f79b764d7074db3947d81d06733e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelsFile: {fileID: 4900000, guid: 1fb55e18a3ca24ef7b52996306aa8b19, type: 3}
   item: {fileID: 700960964}
 --- !u!1 &1989562070
 GameObject:

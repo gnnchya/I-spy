@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44671863, g: 0.496575, b: 0.5750147, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2042,6 +2042,7 @@ MonoBehaviour:
   Ispy: {fileID: 1310805942}
   textBox: {fileID: 2013884657}
   toBeDetectedItem: {fileID: 312219312}
+  SkipButton: {fileID: 1959862698}
   timeOutSound: {fileID: 1715920345}
   clockTick: {fileID: 1484098020}
   count: {fileID: 423092996}
@@ -2800,7 +2801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6e709b121a3354b9c3cde27934c344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelFile: {fileID: 5022602860645237092, guid: 9ab0d7a5b85c6443180446f41f392e65,
+  modelFile: {fileID: 5022602860645237092, guid: 11bb5193cf0ae42468f53a7c89bdcb2e,
     type: 3}
   labelsFile: {fileID: 4900000, guid: 1fb55e18a3ca24ef7b52996306aa8b19, type: 3}
   item: {fileID: 469423415}
@@ -2835,7 +2836,7 @@ MonoBehaviour:
   detectionText: {fileID: 469423415}
   gameText: {fileID: 700960964}
   timerText: {fileID: 809514203}
-  modelFile: {fileID: 5022602860645237092, guid: 9ab0d7a5b85c6443180446f41f392e65,
+  modelFile: {fileID: 5022602860645237092, guid: 11bb5193cf0ae42468f53a7c89bdcb2e,
     type: 3}
   labelsFile: {fileID: 4900000, guid: 1fb55e18a3ca24ef7b52996306aa8b19, type: 3}
   imageWidth: 640
