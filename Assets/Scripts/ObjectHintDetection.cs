@@ -54,17 +54,27 @@ public class ObjectHintDetection : MonoBehaviour
 
         colorRanges = new List<ColorRange>
         {
-            new ColorRange { Lower = new Scalar(0, 153, 102), Upper = new Scalar(9, 255, 255), ColorName = "Red" },
-            new ColorRange { Lower = new Scalar(10, 64, 166), Upper = new Scalar(20, 255, 255), ColorName = "Orange" },
-            new ColorRange { Lower = new Scalar(21, 38, 166), Upper = new Scalar(34, 255, 255), ColorName = "Yellow" },
-            new ColorRange { Lower = new Scalar(35, 52, 72), Upper = new Scalar(84, 255, 255), ColorName = "Green" },
-            new ColorRange { Lower = new Scalar(85, 40, 72), Upper = new Scalar(123, 255, 255), ColorName = "Blue" },
-            new ColorRange { Lower = new Scalar(124, 64, 64), Upper = new Scalar(150, 255, 255), ColorName = "Purple" },
-            new ColorRange { Lower = new Scalar(150, 10, 188), Upper = new Scalar(180, 255, 255), ColorName = "Pink" },
-            new ColorRange { Lower = new Scalar(0, 10, 188), Upper = new Scalar(20, 64, 255), ColorName = "Pink" },
-            // new ColorRange { Lower = new Scalar(0, 100, 20), Upper = new Scalar(20, 255, 200), ColorName = "Brown" },
+            new ColorRange { Lower = new Scalar(170, 50, 50), Upper = new Scalar(180, 255, 255), ColorName = "Red" },
+            new ColorRange { Lower = new Scalar(5, 120, 70), Upper = new Scalar(15, 255, 255), ColorName = "Orange" },
+            new ColorRange { Lower = new Scalar(20, 120, 70), Upper = new Scalar(40, 255, 255), ColorName = "Yellow" },
+            new ColorRange { Lower = new Scalar(40, 60, 60), Upper = new Scalar(90, 255, 255), ColorName = "Green" },
+            new ColorRange { Lower = new Scalar(90, 60, 60), Upper = new Scalar(150, 255, 255), ColorName = "Blue" },
+            new ColorRange { Lower = new Scalar(130, 60, 60), Upper = new Scalar(170, 255, 255), ColorName = "Purple" },
+            new ColorRange { Lower = new Scalar(160, 60, 60), Upper = new Scalar(180, 255, 255), ColorName = "Pink" },
+            new ColorRange { Lower = new Scalar(0, 60, 20), Upper = new Scalar(30, 255, 200), ColorName = "Brown" },
             new ColorRange { Lower = new Scalar(0, 0, 0), Upper = new Scalar(180, 255, 40), ColorName = "Black" },
-            new ColorRange { Lower = new Scalar(0, 0, 180), Upper = new Scalar(180, 15, 255), ColorName = "White" }
+            new ColorRange { Lower = new Scalar(0, 0, 180), Upper = new Scalar(180, 25, 255), ColorName = "White" }
+        //     new ColorRange { Lower = new Scalar(0, 153, 102), Upper = new Scalar(9, 255, 255), ColorName = "Red" },
+        //     new ColorRange { Lower = new Scalar(10, 64, 166), Upper = new Scalar(20, 255, 255), ColorName = "Orange" },
+        //     new ColorRange { Lower = new Scalar(21, 38, 166), Upper = new Scalar(34, 255, 255), ColorName = "Yellow" },
+        //     new ColorRange { Lower = new Scalar(35, 52, 72), Upper = new Scalar(84, 255, 255), ColorName = "Green" },
+        //     new ColorRange { Lower = new Scalar(85, 40, 72), Upper = new Scalar(123, 255, 255), ColorName = "Blue" },
+        //     new ColorRange { Lower = new Scalar(124, 64, 64), Upper = new Scalar(150, 255, 255), ColorName = "Purple" },
+        //     new ColorRange { Lower = new Scalar(150, 10, 188), Upper = new Scalar(180, 255, 255), ColorName = "Pink" },
+        //     new ColorRange { Lower = new Scalar(0, 10, 188), Upper = new Scalar(20, 64, 255), ColorName = "Pink" },
+        //     // new ColorRange { Lower = new Scalar(0, 100, 20), Upper = new Scalar(20, 255, 200), ColorName = "Brown" },
+        //     new ColorRange { Lower = new Scalar(0, 0, 0), Upper = new Scalar(180, 255, 40), ColorName = "Black" },
+        //     new ColorRange { Lower = new Scalar(0, 0, 180), Upper = new Scalar(180, 15, 255), ColorName = "White" }
         };
 
     }
@@ -79,9 +89,6 @@ public class ObjectHintDetection : MonoBehaviour
                 return;
 
             // // Create a new texture from the webcam texture
-            var texture = new Texture2D(webCamTexture.width, webCamTexture.height, TextureFormat.RGBA32, false);
-            texture.SetPixels32(webCamTexture.GetPixels32());
-            texture.Apply();
             findColoredShape();
 
             detectionText.text = FindNearestItem(distanceQueue, detectedShapesQueue);
@@ -97,10 +104,7 @@ public class ObjectHintDetection : MonoBehaviour
                     distanceQueue.Enqueue(100000f);
                 }
             }
-            // Display the webcam texture in the RawImage
-            rawImage.texture = texture;
-            rawImage.rectTransform.localScale = new Vector3(1, webCamTexture.videoVerticallyMirrored ? -1 : 1, 1);
-            rawImage.rectTransform.localEulerAngles = new Vector3(webCamTexture.videoVerticallyMirrored ? 180 : 0, 0, 0);
+
 
         }
     }
@@ -175,7 +179,15 @@ public class ObjectHintDetection : MonoBehaviour
 
                 }
             }
+
+            mask.Dispose();
+            eMask.Dispose();
+            dMask.Dispose();
+
         }
+
+        img.Dispose();
+        hsv.Dispose();
 
     }
 
