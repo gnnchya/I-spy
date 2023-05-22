@@ -49,7 +49,8 @@ public class ObjectDetection : MonoBehaviour
         }
 
         // Start the webcam texture
-        webCamTexture = new WebCamTexture(WebCamTexture.devices[0].name, imageWidth, imageHeight, 30);
+        //webCamTexture = new WebCamTexture(WebCamTexture.devices[1].name, imageWidth, imageHeight, 30);
+        webCamTexture = new WebCamTexture(WebCamTexture.devices[0].name, Screen.width, Screen.height, 30);
         rawImage.texture = webCamTexture;
         webCamTexture.Play();
     }

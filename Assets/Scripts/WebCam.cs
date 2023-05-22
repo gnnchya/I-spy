@@ -55,7 +55,7 @@ public class WebCam : MonoBehaviour
         //}
 
         //this.webCamTexture = new WebCamTexture();
-        this.webCamTexture = new WebCamTexture(WebCamTexture.devices[0].name, Detector.IMAGE_SIZE, Detector.IMAGE_SIZE, 30);
+        this.webCamTexture = new WebCamTexture(WebCamTexture.devices[1].name, Detector.IMAGE_SIZE, Detector.IMAGE_SIZE, 30);
         //this.webCamTexture = new WebCamTexture(WebCamTexture.devices[1].name, Screen.width, Screen.height, 30);
 
         this.rawImage.texture = this.webCamTexture;

@@ -40,7 +40,8 @@ public class ObjectHintDetection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        webCamTexture = new WebCamTexture(WebCamTexture.devices[0].name, imageWidth, imageHeight, 30);
+        //webCamTexture = new WebCamTexture(WebCamTexture.devices[0].name, imageWidth, imageHeight, 30);
+        webCamTexture = new WebCamTexture(WebCamTexture.devices[0].name, Screen.width, Screen.height, 30);
         rawImage.texture = webCamTexture;
         webCamTexture.Play();
 
