@@ -45,7 +45,6 @@ public class ObjectHintDetection : MonoBehaviour
         rawImage.texture = webCamTexture;
         webCamTexture.Play();
 
-        imageCenter = new Vector2((float)imageWidth / 2f, (float)imageHeight / 2f);
 
         for (int i = 0; i < queueLength; i++)
         {
@@ -109,8 +108,8 @@ public class ObjectHintDetection : MonoBehaviour
     void findColoredShape()
     {
         Mat img = OpenCvSharp.Unity.TextureToMat(webCamTexture);
-        // Debug.Log("r"+img.Size().Width);
-        // Debug.Log("C"+img.Size());
+        imageCenter = new Vector2((float)webCamTexture.width / 2f, (float)webCamTexture.height / 2f);
+
         // Convert BGR to HSV for color filtering
         Mat hsv = new Mat();
         Cv2.CvtColor(img, hsv, ColorConversionCodes.BGR2HSV);
@@ -151,15 +150,15 @@ public class ObjectHintDetection : MonoBehaviour
 
                     if (approx.Length == 3)
                     {
-                        shapeName = "Triangle" + area.ToString();
+                        shapeName = "Triangle";
                     }
                     else if (approx.Length == 4) 
                     {
-                        shapeName = "Rectangle" + area.ToString();
+                        shapeName = "Rectangle";
                     }
                     else if (approx.Length >= 5)
                     {
-                        shapeName = "Circle" + area.ToString();
+                        shapeName = "Circle";
                     }
 
                     if (shapeName != null)
@@ -168,7 +167,6 @@ public class ObjectHintDetection : MonoBehaviour
 						float cx = (float)(m.M10 / m.M00);
 						float cy = (float)(m.M01 / m.M00);
                         float eu_d = CalculateEuclideanDistance(cx, cy, imageCenter);
-                        Debug.Log(colorName + " " + shapeName + " " + eu_d);
                         distanceQueue.Dequeue();
                         distanceQueue.Enqueue(eu_d);
                         detectedShapesQueue.Dequeue();
