@@ -100,13 +100,14 @@ public class ObjectDetection : MonoBehaviour
 
 
             // Display the webcam texture in the RawImage
-            rawImage.texture = texture;
-            rawImage.rectTransform.localScale = new Vector3(1, webCamTexture.videoVerticallyMirrored ? -1 : 1, 1);
-            rawImage.rectTransform.localEulerAngles = new Vector3(webCamTexture.videoVerticallyMirrored ? 180 : 0, 0, 0);
+            // rawImage.texture = texture;
+            // rawImage.rectTransform.localScale = new Vector3(1, webCamTexture.videoVerticallyMirrored ? -1 : 1, 1);
+            // rawImage.rectTransform.localEulerAngles = new Vector3(webCamTexture.videoVerticallyMirrored ? 180 : 0, 0, 0);
 
             // Dispose the input and output tensors
             inputTensor.Dispose();
             outputTensor.Dispose();
+            Destroy(texture);
         }
     }
 
