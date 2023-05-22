@@ -156,11 +156,11 @@ public class ObjectHintDetection : MonoBehaviour
                     {
                         shapeName = "Triangle";
                     }
-                    else if (approx.Length == 4) 
+                    else if (approx.Length <= 5) 
                     {
                         shapeName = "Rectangle";
                     }
-                    else if (approx.Length >= 5)
+                    else if (approx.Length >= 6)
                     {
                         shapeName = "Circle";
                     }
