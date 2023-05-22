@@ -41,7 +41,7 @@ public class ObjectHintDetection : MonoBehaviour
     void Start()
     {
         //webCamTexture = new WebCamTexture(WebCamTexture.devices[0].name, imageWidth, imageHeight, 30);
-        webCamTexture = new WebCamTexture(WebCamTexture.devices[0].name, Screen.width, Screen.height, 30);
+        webCamTexture = new WebCamTexture(WebCamTexture.devices[0].name, imageWidth, imageHeight, 30);
         rawImage.texture = webCamTexture;
         webCamTexture.Play();
 
@@ -173,6 +173,7 @@ public class ObjectHintDetection : MonoBehaviour
                         float eu_d = CalculateEuclideanDistance(cx, cy, imageCenter);
                         distanceQueue.Dequeue();
                         distanceQueue.Enqueue(eu_d);
+                        Debug.Log(colorName + " " + shapeName + area.ToString());
                         detectedShapesQueue.Dequeue();
                         detectedShapesQueue.Enqueue(colorName + " " + shapeName);
                     }
